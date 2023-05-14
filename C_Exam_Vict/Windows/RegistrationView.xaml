@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <!--<Image Source="/Backgraund.jpg" Stretch="UniformToFill" />-->
+        
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -31,9 +31,9 @@
                 </Grid.RowDefinitions>
                 <TextBlock Text="Login" TextAlignment="Center" Grid.Row="1" Width="300"
                            FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Algerian"/>
-                <TextBox Name="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Text="" Grid.Row="2" Width="300" FontSize="20" FontFamily="Algerian" Margin="0,10,0,0" Grid.RowSpan="2"/>
+                <TextBox Name="LoginReg" HorizontalAlignment="Center" VerticalAlignment="Top" Text="" Grid.Row="2" Width="300" FontSize="20" FontFamily="Algerian" Margin="0,10,0,0" Grid.RowSpan="2"/>
                 <TextBlock HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Text="Password" Grid.Row="4" Width="300" FontSize="22" FontFamily="Algerian"/>
-                <PasswordBox x:Name="Password" HorizontalAlignment="Center" VerticalAlignment="Center" Password="" Grid.Row="5" Width="300" FontSize="20" FontFamily="Algerian" />
+                <PasswordBox x:Name="PasswordReg" HorizontalAlignment="Center" VerticalAlignment="Center" Password="" Grid.Row="5" Width="300" FontSize="20" FontFamily="Algerian" />
                 <Button x:Name="RegistrationButton" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6"  Width="200" Height="30" FontSize="20" 
                         Content="Register" 
                         FontFamily="Algerian" Background="#FFC2FF17" BorderBrush="#FFA7A7A7">
@@ -60,6 +60,9 @@
                     </LinearGradientBrush>
                 </Button.Foreground>
             </Button>
+            <TextBlock x:Name="NameRegistrView" Text="Registration" TextAlignment="Center" Grid.Row="0" 
+                           FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Algerian" Foreground="Blue" 
+                Grid.Column="1"   TextWrapping="Wrap"/>
 
         </Grid>
     </Grid>

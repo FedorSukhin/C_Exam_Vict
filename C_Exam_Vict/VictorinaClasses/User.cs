@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace C_Exam_Vict.User
+namespace C_Exam_Vict.VictorinaClasses
 {
     internal class User
     {

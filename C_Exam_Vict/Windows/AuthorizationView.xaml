@@ -3,10 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:C_Exam_Vict.Windows"
+             xmlns:local="clr-namespace:C_Exam_Vict.Windows" 
+            
+             xmlns:model="clr-namespace:C_Exam_Vict.Model" d:DataContext="{d:DesignInstance Type=model:AuthorisationM}"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="550">
+               d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="4*"/>
@@ -19,46 +23,53 @@
             </Grid.RowDefinitions>
             <Grid Grid.Column="1" Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="8*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="Login" TextAlignment="Center" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="1" Width="300"
+                <TextBlock Text="Login" TextAlignment="Center" Grid.Row="1" Width="300"
                            FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Algerian"/>
-                <TextBox x:Name="LoginAutorisation" HorizontalAlignment="Center" VerticalAlignment="Center" Text=""
-                           Grid.Column="0" Grid.Row="2"  Grid.ColumnSpan="1" Width="300" FontSize="20" FontFamily="Algerian"/>
-                <TextBlock HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Text="Password"
-                           Grid.Column="0" Grid.Row="3"  Grid.ColumnSpan="1" Width="300" FontSize="22" FontFamily="Algerian"/>
-                <PasswordBox x:Name="PasswordText" HorizontalAlignment="Center" VerticalAlignment="Center" Password=""
-                             Grid.Column="0" Grid.Row="4"  Grid.ColumnSpan="1" Width="300" FontSize="20" FontFamily="Algerian" />
-                <Button x:Name="AutorizationButton" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="5"
-                             Width="200" Height="30" FontSize="20" Content="Autorization"
-                        Command="{Binding LoadRegistrationCommand, Mode=OneTime}"\
-                        FontFamily="Algerian" Background="#FFC2FF17" BorderBrush="#FFA7A7A7" >
+                <TextBox Name="LoginAuthor" HorizontalAlignment="Center" VerticalAlignment="Top"  Grid.Row="2" Width="300"
+                         FontSize="20" FontFamily="Algerian"
+                        Text="{Binding LoginAthor}"/>
+                <TextBlock HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Text="Password" Grid.Row="4" Width="300" FontSize="22" FontFamily="Algerian"/>
+                <PasswordBox x:Name="PasswordAusor" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="5" Width="300" 
+                             FontSize="20" FontFamily="Algerian" 
+                             Password=""/>
+                <Button x:Name="RegistrationButtonRegistration" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6"  Width="200" Height="30" FontSize="20" 
+                        Content="Autorisation" 
+                        FontFamily="Algerian" Background="#FFC2FF17" BorderBrush="#FFA7A7A7">
                     <Button.Foreground>
-                        <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FF812B2B"/>
                             <GradientStop Color="#FFF6F0F0" Offset="1"/>
+
                         </LinearGradientBrush>
                     </Button.Foreground>
                 </Button>
-                <TextBlock x:Name="MassageError" HorizontalAlignment="Center" Text="" VerticalAlignment="Center"
-                           FontSize="20" Foreground="Red" FontFamily="Algerian" />
+                <TextBlock x:Name="RegistErrorMassege" Text="" TextAlignment="Center" Grid.Row="0" 
+                           FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Algerian" Foreground="Red"/>
             </Grid>
-            <Button  x:Name="RegistrationButton" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" 
-                     Content="Registration" Width="200" Height="30" FontSize="20"
-                     FontFamily="Algerian" BorderBrush="#FFA7A7A7" Background="#FFC2FF17" 
-                     Command="{Binding LoadRegistrationCommand, Mode=OneTime}" >
+            <Button x:Name="RegistrationButtonAuthor" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"  Width="200" Height="30" FontSize="20"
+                    Content="Register" FontFamily="Algerian" Background="#FFC2FF17" BorderBrush="#FFA7A7A7"
+                    Grid.Column="1" 
+                    Command="{Binding LoadRegistrationCommand, Mode=OneTime}">
                 <Button.Foreground>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
                         <GradientStop Color="#FF812B2B"/>
                         <GradientStop Color="#FFF6F0F0" Offset="1"/>
+
                     </LinearGradientBrush>
                 </Button.Foreground>
             </Button>
-        
+            <TextBlock x:Name="NameAuthorView" Text="Authorisation" TextAlignment="Center" Grid.Row="0" 
+                           FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Algerian" Foreground="Blue" 
+                Grid.Column="1"   TextWrapping="Wrap"  />
+
+        </Grid>
     </Grid>
 </UserControl>

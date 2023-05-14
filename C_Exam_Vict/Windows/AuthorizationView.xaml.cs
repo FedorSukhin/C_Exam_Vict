@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using C_Exam_Vict;
-using C_Exam_Vict.User;
+
 
 namespace C_Exam_Vict.Windows
 {
