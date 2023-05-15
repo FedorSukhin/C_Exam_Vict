@@ -9,7 +9,7 @@ using C_Exam_Vict.Windows;
 using System.Windows.Controls;
 using C_Exam_Vict.ViewModel;
 
-namespace C_Exam_Vict.ViewModel
+namespace C_Exam_Vict.Services
 {
 
     public interface IViewsManager //свой интерфейс для отображения конкретного окна
@@ -33,11 +33,11 @@ namespace C_Exam_Vict.ViewModel
         private ContentPresenter _outputView; //привязка к событию в XMAL, отвечающую за смену окон
         private class VVM// для записи пары V и VM в Dictionary
         {
-            public UserControl View { get; set; } 
+            public UserControl View { get; set; }
             public ViewModelBase ViewModel { get; set; }
 
         }
-        
+
         private Dictionary<ViewType, VVM> _views; //набор всех окон
 
         public ViewsManager(ContentPresenter cp)//конструктор менеджера окон, с передачей MainWindow
@@ -54,7 +54,7 @@ namespace C_Exam_Vict.ViewModel
 
             var vvm = _views[typeView];//выбираем конкретную пару 
             _outputView.Content = vvm.View;//загружаем окно в MainWindow
-            vvm.View.DataContext=vvm.ViewModel;//привязываем VM К V
+            vvm.View.DataContext = vvm.ViewModel;//привязываем VM К V
         }
 
 

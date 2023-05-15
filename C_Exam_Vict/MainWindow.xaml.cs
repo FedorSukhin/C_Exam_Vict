@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using C_Exam_Vict.ViewModel;
+using C_Exam_Vict.Services;
 using C_Exam_Vict.Windows;
 
 

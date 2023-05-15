@@ -1,5 +1,4 @@
-﻿using C_Exam_Vict.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,11 +7,13 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using C_Exam_Vict.Model;
 using System.Runtime.CompilerServices;
+using C_Exam_Vict.Services;
 
 namespace C_Exam_Vict.ViewModel
 {
-    internal class AuthorizationVM: ViewModelBase, INotifyPropertyChanged
+    internal class AuthorizationVM : ViewModelBase, INotifyPropertyChanged
     {
+       private UserService _userService;
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         public void OnPropertyChanged([CallerMemberName] string prop = "")
@@ -21,52 +22,73 @@ namespace C_Exam_Vict.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
         //ctor
-        public AuthorizationVM(IViewsManager vm):base(vm) 
+        public AuthorizationVM(IViewsManager vm) : base(vm)
         {
-
+            _userService = new UserService();
         }
         //Properties
 
         /// <summary>
         /// Введенная строка в TextBox
         /// </summary>
-        //private string _loginAuthor;
-        AuthorisationM _authorM;
-        public string LoginAuthor
+        private string _login = "";
+        public string Login
         {
-           // get { return _InputText; }
+            get { return _login; }
             set
             {
-                _authorM.LoginAuthor = value;
-                OnPropertyChanged("LoginAuthor");
-                
+                _login = value;
+                OnPropertyChanged();
             }
         }
-
+        private string _password = "";
+        public string Password
+        {
+            get { return _password; }
+            set
+            {
+                _password = value;
+                OnPropertyChanged();
+            }
+        }
+        private string _errormassege = "";
+        public string ErrorMessage
+        {
+            get { return _errormassege; }
+            set
+            {
+                _errormassege = value;
+                OnPropertyChanged();
+            }
+        }
 
         //Commands
 
         ///// <summary>
         ///// отправка команды на проверку данных о пользователе 
         ///// </summary>
-        private ICommand _SendLoginPaswordCommand;
-        public ICommand SendLoginPaswordCommand
+        private ICommand _checkLoginPaswordCommand;
+        public ICommand CheckLoginPaswordCommand
         {
             get
             {
-                return _SendLoginPaswordCommand = _SendLoginPaswordCommand ??
-                  new Command(SendLoginPasword, CanSendLoginPasword);
+                return _checkLoginPaswordCommand = _checkLoginPaswordCommand ??
+                  new Command(CheckLoginPasword, CanCheckLoginPasword);
             }
         }
-        private bool CanSendLoginPasword()
-
+        private bool CanCheckLoginPasword()
         {
-            return true;
+            return true/* _login.Length > 0 *//*&& _password.Length > 0*/;
         }
 
-        private void SendLoginPasword()
+        private void CheckLoginPasword()
         {
-
+            try 
+            {
+                _userService.SingIn(_login, _password);
+                viewsManager.LoadView(ViewType.MainMenu);
+            }
+            catch (Exception e) { ErrorMessage = e.Message; }
         }
         /// <summary>
         /// Переход к RegistrationView
@@ -86,8 +108,11 @@ namespace C_Exam_Vict.ViewModel
         }
         private void OnLoadRegistration()
         {
+            Login = "";
+
             viewsManager.LoadView(ViewType.Registration);
-            
+
+
         }
 
     }

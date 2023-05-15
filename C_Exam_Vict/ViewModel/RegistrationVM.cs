@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using C_Exam_Vict.ViewModel;
+using C_Exam_Vict.Services;
 using C_Exam_Vict.Windows;
 
 namespace C_Exam_Vict.ViewModel
