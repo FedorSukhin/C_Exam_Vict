@@ -39,6 +39,7 @@ namespace C_Exam_Vict.ViewModel
             {
                 _login = value;
                 OnPropertyChanged();
+                ErrorMessage = "";
             }
         }
         private string _password = "";
@@ -49,15 +50,16 @@ namespace C_Exam_Vict.ViewModel
             {
                 _password = value;
                 OnPropertyChanged();
+                ErrorMessage = "";
             }
         }
-        private string _errormassege = "";
+        private string _errormessage = "";
         public string ErrorMessage
         {
-            get { return _errormassege; }
+            get { return _errormessage; }
             set
             {
-                _errormassege = value;
+                _errormessage = value;
                 OnPropertyChanged();
             }
         }
@@ -78,7 +80,7 @@ namespace C_Exam_Vict.ViewModel
         }
         private bool CanCheckLoginPasword()
         {
-            return true/* _login.Length > 0 *//*&& _password.Length > 0*/;
+            return _login.Length > 0 /*&& _password.Length > 0*/;
         }
 
         private void CheckLoginPasword()
@@ -109,10 +111,7 @@ namespace C_Exam_Vict.ViewModel
         private void OnLoadRegistration()
         {
             Login = "";
-
             viewsManager.LoadView(ViewType.Registration);
-
-
         }
 
     }

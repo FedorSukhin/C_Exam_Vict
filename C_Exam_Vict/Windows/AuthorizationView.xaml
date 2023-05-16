@@ -37,9 +37,12 @@
                          FontSize="20" FontFamily="Algerian"
                         Text="{Binding Path=Login}"/>
                 <TextBlock HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Text="Password" Grid.Row="4" Width="300" FontSize="22" FontFamily="Algerian"/>
-                <PasswordBox x:Name="PasswordAusor" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="5" Width="300" 
+                <TextBox Name="Password" HorizontalAlignment="Center" VerticalAlignment="Top"  Grid.Row="5" Width="300"
+                         FontSize="20" FontFamily="Algerian"
+                        Text="{Binding Path=Password}"/>
+                <!--<PasswordBox x:Name="PasswordAusor" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="5" Width="300" 
                              FontSize="20" FontFamily="Algerian" 
-                             Password=""/>
+                             Password=""/>-->
                 <Button x:Name="Authorisation" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6"  Width="200" Height="30" FontSize="20" 
                         Content="Authorisation" Command="{Binding CheckLoginPaswordCommand, Mode=OneTime}"
                         FontFamily="Algerian" Background="#FFC2FF17" BorderBrush="#FFA7A7A7">
@@ -47,11 +50,10 @@
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FF812B2B"/>
                             <GradientStop Color="#FFF6F0F0" Offset="1"/>
-
                         </LinearGradientBrush>
                     </Button.Foreground>
                 </Button>
-                <TextBlock x:Name="RegistErrorMassege" Text="" TextAlignment="Center" Grid.Row="0" 
+                <TextBlock x:Name="ErrorMassage" TextAlignment="Center" Grid.Row="0" Text="{Binding ErrorMessage, UpdateSourceTrigger=PropertyChanged}"
                            FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Algerian" Foreground="Red"/>
             </Grid>
             <Button x:Name="RegistrationButtonAuthor" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"  Width="200" Height="30" FontSize="20"

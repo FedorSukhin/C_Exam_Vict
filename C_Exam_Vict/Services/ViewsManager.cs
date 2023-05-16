@@ -35,7 +35,6 @@ namespace C_Exam_Vict.Services
         {
             public UserControl View { get; set; }
             public ViewModelBase ViewModel { get; set; }
-
         }
 
         private Dictionary<ViewType, VVM> _views; //набор всех окон
@@ -47,38 +46,16 @@ namespace C_Exam_Vict.Services
             //заполняем набор значениями
             _views.Add(ViewType.Authorization, new VVM { View = new AuthorizationView(), ViewModel = new AuthorizationVM(this) });
             _views.Add(ViewType.Registration, new VVM { View = new RegistrationView(), ViewModel = new RegistrationVM(this) });
+            _views.Add(ViewType.MainMenu ,new VVM { View = new MainMenuView(), ViewModel = new MainMenuVM(this) });
+
         }
         //метод загрузки конкретного окна
         public void LoadView(ViewType typeView)
         {
-
             var vvm = _views[typeView];//выбираем конкретную пару 
             _outputView.Content = vvm.View;//загружаем окно в MainWindow
             vvm.View.DataContext = vvm.ViewModel;//привязываем VM К V
         }
-
-
-
-
-        ///// <summary>
-        ///// Переход к MainMenu
-        ///// </summary>
-        //private Command _LoadMainMenuCommand;
-        //public Command LoadMainMenuCommand
-        //{
-        //    get
-        //    {
-        //        return _LoadMainMenuCommand = _LoadMainMenuCommand ??
-        //          new Command(OnLoadMainMenu, CanLoadMainMenu);
-        //    }
-        //}
-        //private bool CanLoadMainMenu()
-        //{
-        //    return true;
-        //}
-        //private void OnLoadMainMenu()
-        //{
-        //    CodeBehind.LoadView(ViewType.MainMenu);
-        //}
+                
     }
 }

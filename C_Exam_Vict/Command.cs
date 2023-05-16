@@ -38,10 +38,15 @@ namespace C_Exam_Vict
             executeMethod();
         }
         // CanExecuteChanged - вызывается при изменении условий, указывающий, может ли команда выполняться.
-        public event EventHandler CanExecuteChanged;
-        protected void OnCanExecuteChanged(EventArgs e)
-        { // вызываем эту-же команду
-            CanExecuteChanged?.Invoke(this, e);
+        //public event EventHandler CanExecuteChanged;
+        //protected void OnCanExecuteChanged(EventArgs e)
+        //{ // вызываем эту-же команду
+        //    CanExecuteChanged?.Invoke(this, e);
+        //}
+        public event EventHandler? CanExecuteChanged
+        {
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
         }
 
     }

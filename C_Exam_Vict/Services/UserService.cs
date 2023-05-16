@@ -37,6 +37,18 @@ internal class UserService
         };
         return _currentUser;
     }
+    public void SingOut(string login, string password) 
+    {
+        var user =_userRepos.SetUserDB(login,password);
+        if (user != null)
+        {
+            throw new Exception("Login alredy exist");
+        }
+        else 
+        {
+            throw new Exception("Acount successful create");
+        }
+    }
     public UserModel? GetCurrentUser() => _currentUser;
 }
 
