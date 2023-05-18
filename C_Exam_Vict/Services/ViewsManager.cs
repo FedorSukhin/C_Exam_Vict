@@ -48,6 +48,7 @@ namespace C_Exam_Vict.Services
             _views.Add(ViewType.Authorization, new VVM { View = new AuthorizationView(), ViewModel = new AuthorizationVM(this) });
             _views.Add(ViewType.Registration, new VVM { View = new RegistrationView(), ViewModel = new RegistrationVM(this) });
             _views.Add(ViewType.MainMenu, new VVM { View = new MainMenuView(), ViewModel = new MainMenuVM(this) });
+            _views.Add(ViewType.Question, new VVM { View = new QuestionView(), ViewModel = new QuestionVM(this)});
 
         }
         //метод загрузки конкретного окна

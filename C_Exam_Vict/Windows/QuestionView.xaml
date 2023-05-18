@@ -22,37 +22,15 @@
             </Grid.RowDefinitions>
             <Button x:Name="ButtonNext" Content="Next" HorizontalAlignment="Right"  VerticalAlignment="Center" 
                     Height="45" Width="120" Grid.Column="1" Grid.Row="3" Background="#FF5FCEF4" FontSize="24" FontFamily="Algerian" Foreground="#FFDF2C53"/>
-            <Grid Grid.Column="1" Grid.Row="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="10*"/>
-                </Grid.ColumnDefinitions>
-                <CheckBox  x:Name="CheckAnswer1" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
-                <CheckBox  x:Name="CheckAnswer2" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center"/>
-                <CheckBox  x:Name="CheckAnswer3" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Visibility="Hidden"/>
-                <CheckBox  x:Name="CheckAnswer4" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Visibility="Hidden"/>
-                <CheckBox  x:Name="CheckAnswer5" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Visibility="Hidden"/>
-                <CheckBox  x:Name="CheckAnswer6" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Visibility="Hidden"/>
-                <TextBlock x:Name="Answer1" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"/>
-                <TextBlock x:Name="Answer2" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
-                <TextBlock x:Name="Answer3" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2"/>
-                <TextBlock x:Name="Answer4" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3"/>
-                <TextBlock x:Name="Answer5" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4"/>
-                <TextBlock x:Name="Answer6" HorizontalAlignment="Left" Text="" VerticalAlignment="Center" Grid.Column="1" Grid.Row="5"/>
-            </Grid>
             <Grid Grid.Column="1" Grid.Row="3"/>
             <TextBlock x:Name="QuestionsText" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left"   VerticalAlignment="Center"
                        Text=""/>
             <TextBlock x:Name="NumberOfQuestions" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left"    VerticalAlignment="Center" 
                        Text=""/>
+            <ListBox Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Answers}" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"/>
+            
+            
+            <TextBlock Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="1"  Text="{Binding QuestionText}" VerticalAlignment="Center"/>
         </Grid>
     </Grid>
 </UserControl>

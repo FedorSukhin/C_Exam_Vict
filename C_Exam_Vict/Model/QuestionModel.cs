@@ -12,15 +12,15 @@ namespace C_Exam_Vict.Model
         public string Text { get; set; }
         public Guid Id { get; set; }
         public List<AnswersEntity> Answers { get; set; }
-        public QuestionModel() 
-        {              
+        public QuestionModel()
+        {
         }
-        public QuestionModel(string text, Guid id, string answer,bool isCorrect)
+        public QuestionModel(string text, Guid id, string answer, bool isCorrect)
         {
             Text = text;
             Id = id;
-            Answers = new List<AnswersEntity>();               
-            Answers.Add(new AnswersEntity( answer, isCorrect));
+            Answers = new List<AnswersEntity>();
+            Answers.Add(new AnswersEntity(answer, isCorrect));
         }
         public void AddAnswer(string answer, bool isCorrect)
         {
