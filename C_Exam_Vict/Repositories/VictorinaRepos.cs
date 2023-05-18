@@ -8,6 +8,7 @@ using C_Exam_Vict.Model;
 using Dapper;
 using Npgsql;
 using C_Exam_Vict.Entities;
+using System.Windows.Controls;
 
 namespace C_Exam_Vict.Repositories
 {
@@ -27,16 +28,29 @@ namespace C_Exam_Vict.Repositories
                 return Topics;
             }
         }
-        public List<QuestionsOutBD> GetQuestions(string nameTopic)
+        public Dictionary<Guid,QuestionModel> GetQuestions(string nameTopic,int countQuestions)
         {
-            List<QuestionsOutBD> list = new List<QuestionsOutBD>();
+            Dictionary<Guid, QuestionModel> list = new Dictionary<Guid, QuestionModel>();
             using (var dbQuestions = new NpgsqlConnection(ConnectionString))
             {
-                var quest = dbQuestions.Query("select * from (select  random() AS R, \"Questions\".\"Id\" AS \"QId\" ,\"Questions\".\"Text\" AS \"Qtext\" from \"Questions\"join \"Topics\" T on \"Questions\".\"Fk_Topic\" = T.\"Id\"where T.\"Name\"=@name order by R limit 20) AS Questions join \"Answers\" A on A.\"Fk_question\"= Questions.\"QId\";", new { name = nameTopic });
+                var quest = dbQuestions.Query<QuestionsOutBD>(@"
+                     select A.""Text"" AS ""Atext"",A.""IsCorrect"",Questions.""QId"", Questions.""Qtext""
+                     from (
+                            select  random() AS R, ""Questions"".""Id"" AS ""QId"", ""Questions"".""Text"" AS ""Qtext""
+                            from ""Questions""
+                            join ""Topics"" T on ""Questions"".""Fk_Topic"" = T.""Id""
+                            where T.""Name""=@name
+                            order by R
+                            limit @count) AS Questions
+                     join ""Answers"" A on A.""Fk_question""= Questions.""QId""", new { name = nameTopic,count =countQuestions });
+                foreach (var item in quest)
+                {
+                    if (!list.ContainsKey(item.QId)) { list.Add(item.QId, new QuestionModel(item.Qtext, item.QId, item.Atext, item.IsCorrect)); }
+                    else { list[item.QId].AddAnswer(item.Atext, item.IsCorrect); }
+                }
                 return list;
             }
-
-
         }
+        
     }
 }

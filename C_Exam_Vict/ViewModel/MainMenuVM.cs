@@ -100,7 +100,7 @@ namespace C_Exam_Vict.ViewModel
         {
             try 
             {
-                _victorinaRepos.GetQuestions(Topic);
+                _victorinaRepos.GetQuestions(Topic,20);
                 viewsManager.LoadView(ViewType.Question);
             }
             catch (Exception e) { ErrorMessage = e.Message; }
