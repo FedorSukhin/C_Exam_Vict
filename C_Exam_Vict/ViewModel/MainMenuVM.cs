@@ -1,22 +1,25 @@
-﻿using C_Exam_Vict.Services;
-using Npgsql;
-using System;
+﻿using Npgsql;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows;
+using System;
+using System.Windows.Input;
+using System.Runtime.CompilerServices;
+using System.ComponentModel;
 using System.Collections.ObjectModel;
+using C_Exam_Vict.Services;
 using C_Exam_Vict.Repositories;
 
 namespace C_Exam_Vict.ViewModel
 {
-    internal class MainMenuVM: ViewModelBase, INotifyPropertyChanged
+    internal class MainMenuVM : ViewModelBase, INotifyPropertyChanged
     {
         private VictorinaRepos _victorinaRepos;
+        public UserService _currentUser;
+
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         public void OnPropertyChanged([CallerMemberName] string prop = "")
@@ -29,28 +32,80 @@ namespace C_Exam_Vict.ViewModel
             Topics = new ObservableCollection<string>();
             _victorinaRepos = new VictorinaRepos();
             AddTopics();
+            _currentUser = new UserService();
+            _currentUser.GetCurrentUser();
         }
-        private string _topic;
 
-        public string Topic
-        {
-            get {return _topic;} 
-            set 
-            { 
-                _topic = value;
-                OnPropertyChanged("Topic");
-            }
-        }      
+        //Properties
+
+        //выбранная тема 
         public ObservableCollection<string> Topics { get; set; }
 
         public void AddTopics()
         {
-            var list=_victorinaRepos.GetTopics();
+            var list = _victorinaRepos.GetTopics();
             foreach (var item in list)
             {
                 Topics.Add(item);
             }
         }
+
+        private string _topic="";
+        public string Topic
+        {
+            get { return _topic; }
+            set
+            {
+                _topic = value;
+                OnPropertyChanged("Topic");
+            }
+        }
+
+        ///// <summary>
+        ///// Список доступных тем
+        ///// </summary>
+
+        private string _errormessage = "";
+        public string ErrorMessage
+        {
+            get { return _errormessage; }
+            set
+            {
+                _errormessage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        //Commands
+
+        ///// <summary>
+        ///// запускаем викторину 
+        ///// </summary>
+
+        private ICommand _startVictorinCommand;
+        public ICommand StartVictorinCommand
+        {
+            get
+            {
+                return _startVictorinCommand = _startVictorinCommand ??
+                  new Command(StartVictorin, CanStartViktorin);
+            }
+        }
+        private bool CanStartViktorin()
+        {
+            return _topic.Length > 0;
+        }
+
+        private void StartVictorin()
+        {
+            try 
+            {
+                _victorinaRepos.GetQuestions(Topic);
+                viewsManager.LoadView(ViewType.Question);
+            }
+            catch (Exception e) { ErrorMessage = e.Message; }
+        }
+
         //public int CountOfQuestionTotal { get; set; }
         //public MainMenu()
         //{

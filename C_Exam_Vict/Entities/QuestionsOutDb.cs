@@ -15,10 +15,11 @@ namespace C_Exam_Vict.Entities
     //order by R
     //limit 20) AS Questions
     //join "Answers" A on A."Fk_question" = Questions."QId"
-    internal class QuestionsOutBD
+    internal class QuestionsOutBD: QuestionEntity
     {
         public int QuestionsCount { get; set; }
         public string QuestionsTopic { get; set; }
+        public List<AnswersEntity> answers { get; set; }
         public QuestionsOutBD() { }
     }
 }

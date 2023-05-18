@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace C_Exam_Vict.Entities
 {
-    internal class QuestionEntity
+    internal class QuestionEntity: AnswersEntity
     {
         public Guid Id { get; set; }
         public string Text { get; set; }
@@ -18,6 +18,12 @@ namespace C_Exam_Vict.Entities
         public QuestionEntity(string textQuestions, Guid fk_Topic) : this()
         {
             Text = textQuestions;
+            Fk_Topic = fk_Topic;
+        }
+        public QuestionEntity(Guid id, string text, Guid fk_Topic)
+        {
+            Id = id;
+            Text = text;
             Fk_Topic = fk_Topic;
         }
     }

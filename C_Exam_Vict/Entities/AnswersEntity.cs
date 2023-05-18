@@ -16,5 +16,12 @@ namespace C_Exam_Vict.Entities
         {
             Id = Guid.NewGuid();
         }
+        public AnswersEntity(Guid id, Guid fk_Question, bool isCorrect, string text)
+        {
+            Id = id;
+            Fk_Question = fk_Question;
+            IsCorrect = isCorrect;
+            Text = text;
+        }
     }
 }

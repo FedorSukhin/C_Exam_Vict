@@ -25,7 +25,8 @@ namespace C_Exam_Vict.Services
     {
         Authorization,
         Registration,
-        MainMenu
+        MainMenu,
+        Question
     }
 
     public class ViewsManager : IViewsManager //класс управления вставки конкретного окна в MainWindow
@@ -46,7 +47,7 @@ namespace C_Exam_Vict.Services
             //заполняем набор значениями
             _views.Add(ViewType.Authorization, new VVM { View = new AuthorizationView(), ViewModel = new AuthorizationVM(this) });
             _views.Add(ViewType.Registration, new VVM { View = new RegistrationView(), ViewModel = new RegistrationVM(this) });
-            _views.Add(ViewType.MainMenu ,new VVM { View = new MainMenuView(), ViewModel = new MainMenuVM(this) });
+            _views.Add(ViewType.MainMenu, new VVM { View = new MainMenuView(), ViewModel = new MainMenuVM(this) });
 
         }
         //метод загрузки конкретного окна
@@ -56,6 +57,6 @@ namespace C_Exam_Vict.Services
             _outputView.Content = vvm.View;//загружаем окно в MainWindow
             vvm.View.DataContext = vvm.ViewModel;//привязываем VM К V
         }
-                
+
     }
 }
