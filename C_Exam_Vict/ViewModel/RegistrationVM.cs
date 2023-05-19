@@ -24,7 +24,7 @@ namespace C_Exam_Vict.ViewModel
 
         public RegistrationVM(IViewsManager vm) : base(vm)
         {
-            //_userService.GetCurrentUser();
+            _userService = Singletone.GetUserService;
         }
 
         //Properties
@@ -109,7 +109,6 @@ namespace C_Exam_Vict.ViewModel
         {
             try
             {
-                _userService = new UserService();
                 _userService.SingOut(Login, Password);
                 //viewsManager.LoadView(ViewType.MainMenu);
             }

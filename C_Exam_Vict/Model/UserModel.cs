@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace C_Exam_Vict.Model
 {
-    internal class UserModel
+    public class UserModel
     {
         public Guid Id {get; set;}
         public string Login {get; set;}

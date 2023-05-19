@@ -29,6 +29,7 @@
                 <ComboBox Name="NameVictorina" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
                          FontSize="20"  FontFamily="Algerian" Height="30" Width="200" 
                           ItemsSource="{Binding Topics}" SelectedItem="{Binding Topic}" >
+
                 </ComboBox>
                 <TextBlock Grid.Column="0" Grid.Row="0"  Grid.ColumnSpan="1" Text="Название викторины"  TextAlignment="Center"
                            FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontFamily="Mistral" Foreground="#FF9609C9"/>
@@ -67,7 +68,7 @@
                            FontSize="16" Text="Login:" />
                 <Button Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top"
                        FontSize="16" Content="Change User" Background="#FFFAD77C" Foreground="#FF1116FC" />
-                <TextBlock x:Name="UserName" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Path=dff}" 
+                <TextBlock x:Name="UserName" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Login,UpdateSourceTrigger=PropertyChanged}" 
                            VerticalAlignment="Center" FontSize="16"/>
             </Grid>
         </Grid>

@@ -9,6 +9,7 @@ using Dapper;
 using Npgsql;
 using C_Exam_Vict.Entities;
 using System.Windows.Controls;
+using C_Exam_Vict.ViewModel;
 
 namespace C_Exam_Vict.Repositories
 {
@@ -28,9 +29,9 @@ namespace C_Exam_Vict.Repositories
                 return Topics;
             }
         }
-        public Dictionary<Guid,QuestionModel> GetQuestions(string nameTopic,int countQuestions)
+        public List<QuestionModel> GetQuestions(string nameTopic, int countQuestions)
         {
-            Dictionary<Guid, QuestionModel> list = new Dictionary<Guid, QuestionModel>();
+            Dictionary<Guid, QuestionModel> dict = new Dictionary<Guid, QuestionModel>();
             using (var dbQuestions = new NpgsqlConnection(ConnectionString))
             {
                 var quest = dbQuestions.Query<QuestionsOutBD>(@"
@@ -42,15 +43,14 @@ namespace C_Exam_Vict.Repositories
                             where T.""Name""=@name
                             order by R
                             limit @count) AS Questions
-                     join ""Answers"" A on A.""Fk_question""= Questions.""QId""", new { name = nameTopic,count =countQuestions });
+                     join ""Answers"" A on A.""Fk_question""= Questions.""QId""", new { name = nameTopic, count = countQuestions });
                 foreach (var item in quest)
                 {
-                    if (!list.ContainsKey(item.QId)) { list.Add(item.QId, new QuestionModel(item.Qtext, item.QId, item.Atext, item.IsCorrect)); }
-                    else { list[item.QId].AddAnswer(item.Atext, item.IsCorrect); }
+                    if (!dict.ContainsKey(item.QId)) { dict.Add(item.QId, new QuestionModel(item.Qtext, item.QId, item.Atext, item.IsCorrect)); }
+                    else { dict[item.QId].AddAnswer(item.Atext, item.IsCorrect); }
                 }
-                return list;
             }
+            return dict.Values.ToList();
         }
-        
     }
 }

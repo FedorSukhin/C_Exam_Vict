@@ -24,7 +24,8 @@ namespace C_Exam_Vict.ViewModel
         //ctor
         public AuthorizationVM(IViewsManager vm) : base(vm)
         {
-            _userService = new UserService();
+            _userService = Singletone.GetUserService;
+
         }
         //Properties
 

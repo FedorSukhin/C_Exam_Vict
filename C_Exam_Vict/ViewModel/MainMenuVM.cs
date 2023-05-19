@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using C_Exam_Vict.Services;
 using C_Exam_Vict.Repositories;
+using C_Exam_Vict.Model;
 
 namespace C_Exam_Vict.ViewModel
 {
@@ -19,6 +20,9 @@ namespace C_Exam_Vict.ViewModel
     {
         private VictorinaRepos _victorinaRepos;
         public UserService _currentUser;
+        public VictorinaModel _victorinaModel;
+        private UserService _userService;
+        public event EventHandler OnVictorinaChange;
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
@@ -32,15 +36,22 @@ namespace C_Exam_Vict.ViewModel
             Topics = new ObservableCollection<string>();
             _victorinaRepos = new VictorinaRepos();
             AddTopics();
-            _currentUser = new UserService();
-            _currentUser.GetCurrentUser();
+            _currentUser = Singletone.GetUserService;
+            _currentUser.OnUserChange += OnUserChange;
+            _victorinaModel = Singletone.GetVictorina;
         }
 
         //Properties
 
+        private void OnUserChange(object? param, EventArgs e)
+        {
+            Login = _currentUser.GetCurrentUser()!.Login;
+        }
+
         //выбранная тема 
         public ObservableCollection<string> Topics { get; set; }
 
+        //заполняем список допустимых тем
         public void AddTopics()
         {
             var list = _victorinaRepos.GetTopics();
@@ -49,8 +60,8 @@ namespace C_Exam_Vict.ViewModel
                 Topics.Add(item);
             }
         }
-
-        private string _topic="";
+        //выбираем тему
+        private string _topic = "";
         public string Topic
         {
             get { return _topic; }
@@ -61,10 +72,6 @@ namespace C_Exam_Vict.ViewModel
             }
         }
 
-        ///// <summary>
-        ///// Список доступных тем
-        ///// </summary>
-
         private string _errormessage = "";
         public string ErrorMessage
         {
@@ -72,6 +79,16 @@ namespace C_Exam_Vict.ViewModel
             set
             {
                 _errormessage = value;
+                OnPropertyChanged();
+            }
+        }
+        private string _login = "";
+        public string Login
+        {
+            get { return _login; }
+            set
+            {
+                _login = value;
                 OnPropertyChanged();
             }
         }
@@ -98,17 +115,13 @@ namespace C_Exam_Vict.ViewModel
 
         private void StartVictorin()
         {
-            try 
+            try
             {
-                _victorinaRepos.GetQuestions(Topic,20);
+                _victorinaModel.StartVictorina(Topic, 20);
                 viewsManager.LoadView(ViewType.Question);
             }
             catch (Exception e) { ErrorMessage = e.Message; }
         }
-
-     
-
-      
 
     }
 }

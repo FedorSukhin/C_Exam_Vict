@@ -1,45 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using C_Exam_Vict.Entities;
+using C_Exam_Vict.Repositories;
 
 namespace C_Exam_Vict.Model
 {
-
-
-    internal class VictorinaModel
+    internal class VictorinaModel 
     {
+        private int _numberQuestion = 0;
         private string _nameVictorina;
-        private int _countQuestion;
-        Dictionary<Guid, QuestionModel> Questions = new Dictionary<Guid, QuestionModel>();
-        private List<QuestionModel> QuestionsList = new List<QuestionModel>();
-        public List<QuestionModel> QuestionsUser = new List<QuestionModel>();
-        public VictorinaModel() { }
-        public VictorinaModel(string nameVictorina, Dictionary<Guid, QuestionModel> questions)
-        {
-            NameVictorina = nameVictorina;
-            Questions = questions;
-            ConvertDicList();
-            QuestionsUserFalse();
-            _countQuestion = questions.Count;
-        }
+        private VictorinaRepos _victorinaRepos;
 
-        public string NameVictorina
+        private List<QuestionModel> _questionsList = new List<QuestionModel>();
+        public List<QuestionModel> QuestionsUser = new List<QuestionModel>();
+        public event EventHandler OnVictorinaStart;
+        
+
+
+        public VictorinaModel()
         {
-            get { return _nameVictorina; }
-            set { _nameVictorina = value; }
+            _victorinaRepos = new VictorinaRepos();
         }
-        private void ConvertDicList()
+        private void GetQuestions(string nameTopic, int countQuestions)
         {
-            int i = 0;
-            foreach (var item in Questions)
-            {
-                QuestionsList[i] = item.Value;
-                QuestionsUser[i] = item.Value;
-                i++;
-            }
+            _questionsList = _victorinaRepos.GetQuestions(nameTopic, countQuestions);
+            QuestionsUser = _questionsList.ToList();
+            QuestionsUserFalse();            
         }
         private void QuestionsUserFalse()
         {
@@ -51,6 +42,22 @@ namespace C_Exam_Vict.Model
                 }
             }
         }
+        public void StartVictorina(string topic, int countQuestions)
+        {
+            _numberQuestion = 0;
+            GetQuestions(topic, countQuestions);
+            OnVictorinaStart(null,null);
+        }
+        public QuestionModel GetCurrentQuestion()=> QuestionsUser[_numberQuestion];
+        public QuestionModel GetNextQuestion()=> QuestionsUser[++_numberQuestion];
+        public int GetCurrentNumberQuestion() => _numberQuestion;
+        
+
+        public void StopVictorina() 
+        {
+        
+        }
+
         public string[] ResultVictorina(int allowableFalse)
         {
             int CountRight = 0;
@@ -61,27 +68,27 @@ namespace C_Exam_Vict.Model
             {
                 for (int j = 0; QuestionsUser[i].Answers.Count() > j; j++)
                 {
-                    if (QuestionsList[i].Answers[j].IsCorrect) CountRight++;
-                    if (QuestionsUser[i].Answers[j].IsCorrect == QuestionsList[i].Answers[j].IsCorrect) CountUserRight++;
+                    if (_questionsList[i].Answers[j].IsCorrect) CountRight++;
+                    if (QuestionsUser[i].Answers[j].IsCorrect == _questionsList[i].Answers[j].IsCorrect) CountUserRight++;
 
                 }
                 if (CountRight == CountUserRight)
                 {
-                CountUserQuestionsRight++;
+                    CountUserQuestionsRight++;
                 }
                 CountRight = 0;
                 CountUserRight = 0;
-            }            
-            Result[0]="Count of right answers of questions"+CountUserQuestionsRight;
-            if (CountUserQuestionsRight>QuestionsList.Count- allowableFalse) 
+            }
+            Result[0] = "Count of right answers of questions" + CountUserQuestionsRight;
+            if (CountUserQuestionsRight > _questionsList.Count - allowableFalse)
             {
-                Result[1] = "You Win!!"; 
+                Result[1] = "You Win!!";
             }
             else
             {
-                Result[1] = "You Lose!!"; 
+                Result[1] = "You Lose!!";
             }
-            return Result;      
+            return Result;
         }
     }
 }

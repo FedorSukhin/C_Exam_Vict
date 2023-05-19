@@ -20,17 +20,23 @@
                 <RowDefinition Height="4*"/>
                 <RowDefinition Height="1.5*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="ButtonNext" Content="Next" HorizontalAlignment="Right"  VerticalAlignment="Center" 
+            <Button x:Name="ButtonNext" Content="Next" HorizontalAlignment="Right"  VerticalAlignment="Center" Command="{Binding NextQuestionCommand}"
                     Height="45" Width="120" Grid.Column="1" Grid.Row="3" Background="#FF5FCEF4" FontSize="24" FontFamily="Algerian" Foreground="#FFDF2C53"/>
-            <Grid Grid.Column="1" Grid.Row="3"/>
             <TextBlock x:Name="QuestionsText" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left"   VerticalAlignment="Center"
-                       Text=""/>
+                       Text="{Binding QuestionText}" TextWrapping="Wrap" FontSize="18"/>
             <TextBlock x:Name="NumberOfQuestions" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left"    VerticalAlignment="Center" 
-                       Text=""/>
-            <ListBox Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Answers}" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black"/>
-            
-            
-            <TextBlock Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="1"  Text="{Binding QuestionText}" VerticalAlignment="Center"/>
+                       Text="{Binding NumberQuestion}" FontSize="18"/>
+            <ListBox Grid.Column="1" Grid.Row="2" MaxWidth="500" ItemsSource="{Binding Answers}" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                            <CheckBox FontSize="18" IsChecked="{Binding Path=IsChecked}">
+                                <TextBlock Text="{Binding Path=Text}" TextWrapping="Wrap"/>
+                            </CheckBox>
+                        </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
     </Grid>
 </UserControl>

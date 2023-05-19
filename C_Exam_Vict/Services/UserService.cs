@@ -9,13 +9,15 @@ using C_Exam_Vict.Repositories;
 
 namespace C_Exam_Vict.Services;
 
-internal class UserService
+public class UserService
 {
     private static UserModel? _currentUser;
     private UserRepos _userRepos;
+    public event EventHandler OnUserChange;
     public UserService()
     {
         _userRepos = new UserRepos();
+        
     }
     public UserModel SingIn(string login, string password)
     {
@@ -35,6 +37,7 @@ internal class UserService
             Login = login,
             Password = password
         };
+        OnUserChange(null,null);
         return _currentUser;
     }
     public void SingOut(string login, string password) 
@@ -50,5 +53,11 @@ internal class UserService
         }
     }
     public UserModel? GetCurrentUser() => _currentUser;
+    //public string? GetCurrentUserName()
+    //{
+    //    return _currentUser.Login;
+    //}
+
 }
+   
 
