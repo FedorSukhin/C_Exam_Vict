@@ -10,16 +10,25 @@ using C_Exam_Vict.Repositories;
 
 namespace C_Exam_Vict.Model
 {
-    internal class VictorinaModel 
+    internal class VictorinaModel
     {
+        private class QuestionsUser : QuestionModel
+        {
+            public bool IsAnsweredCorrectly { get; set; }
+            public QuestionsUser(QuestionModel question)
+            {
+                Text = question.Text;
+                Answers = question.Answers.ToList();
+            }
+        }
         private int _numberQuestion = 0;
         private string _nameVictorina;
         private VictorinaRepos _victorinaRepos;
+        private List<QuestionsUser> _questionsList = new List<QuestionsUser>();
 
-        private List<QuestionModel> _questionsList = new List<QuestionModel>();
-        public List<QuestionModel> QuestionsUser = new List<QuestionModel>();
         public event EventHandler OnVictorinaStart;
-        
+        public event EventHandler OnVictorinaStop;
+
 
 
         public VictorinaModel()
@@ -28,48 +37,54 @@ namespace C_Exam_Vict.Model
         }
         private void GetQuestions(string nameTopic, int countQuestions)
         {
-            _questionsList = _victorinaRepos.GetQuestions(nameTopic, countQuestions);
-            QuestionsUser = _questionsList.ToList();
-            QuestionsUserFalse();            
+            _questionsList = _victorinaRepos.GetQuestions(nameTopic, countQuestions).Select(x => new QuestionsUser(x)).ToList();
         }
-        private void QuestionsUserFalse()
-        {
-            foreach (var item in QuestionsUser)
-            {
-                foreach (var item1 in item.Answers)
-                {
-                    item1.IsCorrect = false;
-                }
-            }
-        }
+
         public void StartVictorina(string topic, int countQuestions)
         {
             _numberQuestion = 0;
             GetQuestions(topic, countQuestions);
-            OnVictorinaStart(null,null);
+            OnVictorinaStart(this, EventArgs.Empty);
         }
-        public QuestionModel GetCurrentQuestion()=> QuestionsUser[_numberQuestion];
-        public QuestionModel GetNextQuestion()=> QuestionsUser[++_numberQuestion];
-        public int GetCurrentNumberQuestion() => _numberQuestion;
-        
-
-        public void StopVictorina() 
+        public QuestionModel GetCurrentQuestion() => _questionsList[_numberQuestion];
+        public QuestionModel? GetNextQuestion()
         {
-        
+            if (_numberQuestion == _questionsList.Count - 1)
+            {
+                OnVictorinaStop(this, EventArgs.Empty);
+                return null;
+            }
+            return _questionsList[++_numberQuestion];
         }
+        public int GetCurrentNumberQuestion() => _numberQuestion;
+        public bool CheckUserAnswer(List<int> answerNumbers)
+        {
+            var corect = GetCurrentQuestion().Answers.Select((x, i) =>//присвоиваем каждому ответу значение 
+            {//создаем анонимный класс
+                return new
+                {
+                    Ind = i,
+                    IsCorrect = x.IsCorrect
+                };
+            })
+            .Where(x => x.IsCorrect) //берем каждый правильный ответ
+            .Select(x => x.Ind).ToList();//Создаем лист с индексами правильных ответов
 
+            _questionsList[_numberQuestion].IsAnsweredCorrectly = corect.All(answerNumbers.Contains) && corect.Count == answerNumbers.Count;
+            return _questionsList[_numberQuestion].IsAnsweredCorrectly;
+        }
         public string[] ResultVictorina(int allowableFalse)
         {
             int CountRight = 0;
             int CountUserRight = 0;
             int CountUserQuestionsRight = 0;
             string[] Result = { "", "" };
-            for (int i = 0; QuestionsUser.Count() > i; i++)
+            for (int i = 0; _questionsList.Count() > i; i++)
             {
-                for (int j = 0; QuestionsUser[i].Answers.Count() > j; j++)
+                for (int j = 0; _questionsList[i].Answers.Count() > j; j++)
                 {
                     if (_questionsList[i].Answers[j].IsCorrect) CountRight++;
-                    if (QuestionsUser[i].Answers[j].IsCorrect == _questionsList[i].Answers[j].IsCorrect) CountUserRight++;
+                    if (_questionsList[i].Answers[j].IsCorrect == _questionsList[i].Answers[j].IsCorrect) CountUserRight++;
 
                 }
                 if (CountRight == CountUserRight)

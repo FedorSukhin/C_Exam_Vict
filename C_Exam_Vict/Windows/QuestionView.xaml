@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:C_Exam_Vict.Windows"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" >
     <Grid>
         <Grid>
 
@@ -26,12 +25,12 @@
                        Text="{Binding QuestionText}" TextWrapping="Wrap" FontSize="18"/>
             <TextBlock x:Name="NumberOfQuestions" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left"    VerticalAlignment="Center" 
                        Text="{Binding NumberQuestion}" FontSize="18"/>
-            <ListBox Grid.Column="1" Grid.Row="2" MaxWidth="500" ItemsSource="{Binding Answers}" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black">
+            <ListBox Grid.Column="1" Grid.Row="2" MaxWidth="600" ItemsSource="{Binding Answers}" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="Black">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
                             <CheckBox FontSize="18" IsChecked="{Binding Path=IsChecked}">
-                                <TextBlock Text="{Binding Path=Text}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding Path=Text}" Width="500" TextWrapping="Wrap"/>
                             </CheckBox>
                         </StackPanel>
                 </DataTemplate>

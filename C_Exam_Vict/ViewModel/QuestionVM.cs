@@ -39,7 +39,8 @@ namespace C_Exam_Vict.ViewModel
             Answers = new ObservableCollection<AnswerView>();
             _victorina = Singletone.GetVictorina;
             _victorina.OnVictorinaStart += OnVictorinaStart;
-            NextQuestionCommand = new Command(NextQuestion, ()=>true);
+            _victorina.OnVictorinaStop += OnVictorinaStop;
+            NextQuestionCommand = new Command(NextQuestion, () => true);
         }
         //Properties
         private string _numberQuestion;
@@ -69,6 +70,10 @@ namespace C_Exam_Vict.ViewModel
             var quest = _victorina.GetCurrentQuestion();
             ShowQuestion(quest);
         }
+        private void OnVictorinaStop(Object? obj, EventArgs e)
+        {
+            MessageBox.Show("Result");
+        }
         public ObservableCollection<AnswerView> Answers { get; set; }
 
         private void ShowQuestion(QuestionModel quest)
@@ -79,13 +84,18 @@ namespace C_Exam_Vict.ViewModel
                 new AnswerView { IsChecked = false, Text = x.Text }));
             OnPropertyChanged(nameof(Answers));
         }
+        private List<int> UserAnswer()
+        {        
+          return  Answers.Select((x, i) =>
+            new
+            {
+                Ind = i,
+                IsChek=x.IsChecked,
+            }
+            ).Where(x=>x.IsChek).Select(x=>x.Ind).ToList();        
+        }
 
-
-        //private void OnUserChange(object? param, EventArgs e)
-        //{
-        //    AnswersList = _currentUser.GetCurrentUser()!.Login;
-        //}
-
+     
         //Commands
 
         public ICommand NextQuestionCommand { get; init; }
@@ -94,10 +104,15 @@ namespace C_Exam_Vict.ViewModel
         {
             try
             {
-                ShowQuestion(_victorina.GetNextQuestion());
-                viewsManager.LoadView(ViewType.Question);
+                _victorina.CheckUserAnswer(UserAnswer());
+                QuestionModel? quest = _victorina.GetNextQuestion();
+                if (quest != null)
+                {
+                    ShowQuestion(quest);
+                    viewsManager.LoadView(ViewType.Question);
+                }
             }
-            catch (Exception e) {MessageBox.Show(e.Message); }
+            catch (Exception e) { MessageBox.Show(e.Message); }
         }
 
     }
