@@ -45,7 +45,7 @@ namespace C_Exam_Vict.ViewModel
 
         private void OnUserChange(object? param, EventArgs e)
         {
-            Login = _currentUser.GetCurrentUser()!.Login;
+            Login = _currentUser.GetCurrentUser()?.Login??"";//!- подавление ошибок ,? строка до конца будет NULL если Get.. вернет NULL, ??"" - если выражение будет NULL то вернет пустую строку 
         }
 
         //выбранная тема 
@@ -71,7 +71,6 @@ namespace C_Exam_Vict.ViewModel
                 OnPropertyChanged("Topic");
             }
         }
-
         private string _errormessage = "";
         public string ErrorMessage
         {
@@ -122,6 +121,24 @@ namespace C_Exam_Vict.ViewModel
             }
             catch (Exception e) { ErrorMessage = e.Message; }
         }
+        private ICommand _changeUser;
+        public ICommand ChangeUser
+        {
+            get
+            {
+                return _changeUser = _changeUser ??
+                  new Command(Change, ()=>true);
+            }
+        }
+        private void Change()
+        {
+            try
+            {
+               viewsManager.LoadView(ViewType.Authorization);
+            }
+            catch (Exception e) { ErrorMessage = e.Message; }
 
+
+        }
     }
 }

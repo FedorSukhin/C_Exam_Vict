@@ -53,7 +53,6 @@ namespace C_Exam_Vict.ViewModel
                 OnPropertyChanged();
             }
         }
-
         private string _questionText = "";
         public string QuestionText
         {
@@ -64,7 +63,6 @@ namespace C_Exam_Vict.ViewModel
                 OnPropertyChanged();
             }
         }
-
         private void OnVictorinaStart(Object? obj, EventArgs e)
         {
             var quest = _victorina.GetCurrentQuestion();
@@ -72,7 +70,7 @@ namespace C_Exam_Vict.ViewModel
         }
         private void OnVictorinaStop(Object? obj, EventArgs e)
         {
-            MessageBox.Show("Result");
+            viewsManager.LoadView(ViewType.Result);
         }
         public ObservableCollection<AnswerView> Answers { get; set; }
 

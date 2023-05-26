@@ -48,11 +48,12 @@
                     <ComboBoxItem IsSelected="True">20</ComboBoxItem>
                     <ComboBoxItem>25</ComboBoxItem>
                 </ComboBox>
-                <Grid Grid.Row="2">
-                    <Button x:Name="StartButton" Content="Старт" Height="40" Width="150" FontSize="24" FontFamily="Segoe Print"
-                            FontStyle="Italic" FontWeight="Bold" Background="#FF29DFAA" Foreground="#FF871414" 
-                            Command="{Binding StartVictorinCommand, Mode=OneTime}"/>
-                </Grid>
+               
+                    <Button x:Name="StartButton" Content="Start" Height="40" Width="150" FontSize="24" FontFamily="Algerian"
+                            FontStyle="Italic" Background="#FF29DFAA" Foreground="#FF871414" 
+                            Command="{Binding StartVictorinCommand}" Grid.Row="2" ForceCursor="True"
+                            HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                
             </Grid>
             <Grid Grid.Column="2">
                 <Grid.ColumnDefinitions>
@@ -67,12 +68,11 @@
                 <TextBlock HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Center"
                            FontSize="16" Text="Login:" />
                 <Button Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top"
-                       FontSize="16" Content="Change User" Background="#FFFAD77C" Foreground="#FF1116FC" />
+                       FontSize="16" Content="Change User" Background="#FFFAD77C" Foreground="#FF1116FC"
+                        Command="{Binding ChangeUser}"/>
                 <TextBlock x:Name="UserName" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Login,UpdateSourceTrigger=PropertyChanged}" 
                            VerticalAlignment="Center" FontSize="16"/>
             </Grid>
         </Grid>
-        <TextBlock x:Name="ErrorMessage" HorizontalAlignment="Left" Margin="85,339,0,0" TextWrapping="Wrap" 
-                   Text="{Binding ErrorMessage, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="21" Width="660"/>
     </Grid>
 </UserControl>

@@ -53,10 +53,13 @@ public class UserService
         }
     }
     public UserModel? GetCurrentUser() => _currentUser;
-    //public string? GetCurrentUserName()
-    //{
-    //    return _currentUser.Login;
-    //}
+
+    public void LogOut()
+    {
+        _currentUser = null;
+        OnUserChange(this, EventArgs.Empty);
+
+    }
 
 }
    

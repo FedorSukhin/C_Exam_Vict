@@ -26,7 +26,8 @@ namespace C_Exam_Vict.Services
         Authorization,
         Registration,
         MainMenu,
-        Question
+        Question,
+        Result
     }
 
     public class ViewsManager : IViewsManager //класс управления вставки конкретного окна в MainWindow
@@ -45,11 +46,12 @@ namespace C_Exam_Vict.Services
             _outputView = cp;//принимаем сообщение о смене окна
             _views = new Dictionary<ViewType, VVM>();//создаем набор типа окна и соответствующих описаний его
             //заполняем набор значениями
-            _views.Add(ViewType.Authorization, new VVM { View = new AuthorizationView(), ViewModel = new AuthorizationVM(this) });
+            var vm= new AuthorizationVM(this);
+            _views.Add(ViewType.Authorization, new VVM { View = new AuthorizationView(vm), ViewModel = vm });
             _views.Add(ViewType.Registration, new VVM { View = new RegistrationView(), ViewModel = new RegistrationVM(this) });
             _views.Add(ViewType.MainMenu, new VVM { View = new MainMenuView(), ViewModel = new MainMenuVM(this) });
             _views.Add(ViewType.Question, new VVM { View = new QuestionView(), ViewModel = new QuestionVM(this)});
-
+            _views.Add(ViewType.Result, new VVM { View = new ResultView(), ViewModel = new ResultVM(this)});
         }
         //метод загрузки конкретного окна
         public void LoadView(ViewType typeView)

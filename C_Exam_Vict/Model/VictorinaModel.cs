@@ -29,8 +29,6 @@ namespace C_Exam_Vict.Model
         public event EventHandler OnVictorinaStart;
         public event EventHandler OnVictorinaStop;
 
-
-
         public VictorinaModel()
         {
             _victorinaRepos = new VictorinaRepos();
@@ -73,37 +71,21 @@ namespace C_Exam_Vict.Model
             _questionsList[_numberQuestion].IsAnsweredCorrectly = corect.All(answerNumbers.Contains) && corect.Count == answerNumbers.Count;
             return _questionsList[_numberQuestion].IsAnsweredCorrectly;
         }
-        public string[] ResultVictorina(int allowableFalse)
-        {
-            int CountRight = 0;
-            int CountUserRight = 0;
-            int CountUserQuestionsRight = 0;
-            string[] Result = { "", "" };
-            for (int i = 0; _questionsList.Count() > i; i++)
+        public (string result ,string count) ResultVictorina(int allowableFalse)  //tuple
+        {                 
+            string result ="";
+            var count = _questionsList.Where(x=>x.IsAnsweredCorrectly).Count();           
+            if (count > _questionsList.Count - allowableFalse)
             {
-                for (int j = 0; _questionsList[i].Answers.Count() > j; j++)
-                {
-                    if (_questionsList[i].Answers[j].IsCorrect) CountRight++;
-                    if (_questionsList[i].Answers[j].IsCorrect == _questionsList[i].Answers[j].IsCorrect) CountUserRight++;
-
-                }
-                if (CountRight == CountUserRight)
-                {
-                    CountUserQuestionsRight++;
-                }
-                CountRight = 0;
-                CountUserRight = 0;
-            }
-            Result[0] = "Count of right answers of questions" + CountUserQuestionsRight;
-            if (CountUserQuestionsRight > _questionsList.Count - allowableFalse)
-            {
-                Result[1] = "You Win!!";
+                result = "You Win!!";
             }
             else
             {
-                Result[1] = "You Lose!!";
+                result = "You Lose!!";
             }
-            return Result;
+            return (result,count.ToString());
         }
     }
 }
+
+        

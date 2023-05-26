@@ -37,12 +37,10 @@
                          FontSize="20" FontFamily="Algerian"
                         Text="{Binding Path=Login}"/>
                 <TextBlock HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Text="Password" Grid.Row="4" Width="300" FontSize="22" FontFamily="Algerian"/>
-                <TextBox Name="Password" HorizontalAlignment="Center" VerticalAlignment="Top"  Grid.Row="5" Width="300"
-                         FontSize="20" FontFamily="Algerian"
-                        Text="{Binding Path=Password}"/>
-                <!--<PasswordBox x:Name="PasswordAusor" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="5" Width="300" 
-                             FontSize="20" FontFamily="Algerian" 
-                             Password=""/>-->
+                <PasswordBox Name="Password" HorizontalAlignment="Center" VerticalAlignment="Top"  Grid.Row="5" Width="300"
+                         FontSize="20" FontFamily="Algerian" 
+                      PasswordChanged="Password_PasswordChanged" />
+               
                 <Button x:Name="Authorisation" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6"  Width="200" Height="30" FontSize="20" 
                         Content="Authorisation" Command="{Binding CheckLoginPaswordCommand, Mode=OneTime}"
                         FontFamily="Algerian" Background="#FFC2FF17" BorderBrush="#FFA7A7A7">

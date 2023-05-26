@@ -11,7 +11,7 @@ using C_Exam_Vict.Services;
 
 namespace C_Exam_Vict.ViewModel
 {
-    internal class AuthorizationVM : ViewModelBase, INotifyPropertyChanged
+    public class AuthorizationVM : ViewModelBase, INotifyPropertyChanged
     {
        private UserService _userService;
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
@@ -49,9 +49,12 @@ namespace C_Exam_Vict.ViewModel
             get { return _password; }
             set
             {
-                _password = value;
-                OnPropertyChanged();
-                ErrorMessage = "";
+                if (value != _password)
+                {
+                    _password = value;
+                    OnPropertyChanged();
+                    ErrorMessage = "";
+                }
             }
         }
         private string _errormessage = "";
@@ -81,7 +84,7 @@ namespace C_Exam_Vict.ViewModel
         }
         private bool CanCheckLoginPasword()
         {
-            return _login.Length > 0 /*&& _password.Length > 0*/;
+            return _login.Length > 0;
         }
 
         private void CheckLoginPasword()
@@ -90,6 +93,9 @@ namespace C_Exam_Vict.ViewModel
             {
                 _userService.SingIn(_login, _password);
                 viewsManager.LoadView(ViewType.MainMenu);
+                Login = "";
+                Password = "";
+                ErrorMessage = "";
             }
             catch (Exception e) { ErrorMessage = e.Message; }
         }
