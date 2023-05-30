@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="C_Exam_Vict.Entities.AnswersEntity">
+    <Position X="2" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAIACAAAAAA=</HashCode>
+      <FileName>Entities\AnswersEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_Exam_Vict.Entities.JsonConverterDb" Collapsed="true">
+    <Position X="20.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\JsonConverterDb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_Exam_Vict.Entities.QuestionEntity">
+    <Position X="2" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAACAAAAAA=</HashCode>
+      <FileName>Entities\QuestionEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_Exam_Vict.Entities.QuestionsOutBD" Collapsed="true">
+    <Position X="20.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAIAAAAAAAAAIAAAAAAQA=</HashCode>
+      <FileName>Entities\QuestionsOutDb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_Exam_Vict.Entities.TopicEntity" Collapsed="true">
+    <Position X="20.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\TopicEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_Exam_Vict.Model.UserEntity">
+    <Position X="8" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAAAAAAAAAAAAACAAAQAAAAAAA=</HashCode>
+      <FileName>Entities\UserEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_Exam_Vict.Model.ModelDepositorBase" Collapsed="true">
+    <Position X="17" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ModelDepositorBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_Exam_Vict.Model.QuestionModel" Collapsed="true">
+    <Position X="18.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAQAAAAQAAACAAAAAA=</HashCode>
+      <FileName>Model\QuestionModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_Exam_Vict.Model.UserModel" Collapsed="true">
+    <Position X="15.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAAAAAAAAAAAAACAAAQAAAAAAA=</HashCode>
+      <FileName>Model\UserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_Exam_Vict.Model.VictorinaModel" Collapsed="true">
+    <Position X="20.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAEEAIAABACAAAGAIAIhAAAAE=</HashCode>
+      <FileName>Model\VictorinaModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_Exam_Vict.Repositories.UserRepos">
+    <Position X="17" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAABAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Repositories\UserRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_Exam_Vict.Repositories.VictorinaRepos">
+    <Position X="10.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAABAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Repositories\VictorinaRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_Exam_Vict.Services.Singletone" Collapsed="true">
+    <Position X="18.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAgAAAAAAAAAAAAAAAAAAAAAEAACACAA=</HashCode>
+      <FileName>Services\Singletone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_Exam_Vict.Services.UserService" Collapsed="true">
+    <Position X="18.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQACAECAAAkAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\UserService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_Exam_Vict.Services.ViewsManager" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.25" Y="4.75" Width="1.5" />
+    <NestedTypes>
+      <Class Name="C_Exam_Vict.Services.ViewsManager.VVM" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Services\ViewsManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAACAAgAAAAAA=</HashCode>
+      <FileName>Services\ViewsManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.167" Collapsed="true" />
+  </Class>
+  <Class Name="C_Exam_Vict.ViewModel.AuthorizationVM" Collapsed="true">
+    <Position X="11" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BQQAAAAAIQAAAAACIAAAAAAAoAAABACCAAAVIACAAAA=</HashCode>
+      <FileName>ViewModel\AuthorizationVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="C_Exam_Vict.ViewModel.MainMenuVM" Collapsed="true">
+    <Position X="2" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IQEABAEAEADEEgEAIEAABAAAgAAABAAIAAAUIiAAAIA=</HashCode>
+      <FileName>ViewModel\MainMenuVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="C_Exam_Vict.ViewModel.AnswerView" Collapsed="true">
+    <Position X="13.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>ViewModel\QuestionVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_Exam_Vict.ViewModel.QuestionVM" Collapsed="true">
+    <Position X="4.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAwAQEAAAAAqAAAAAAAgAAAAAAASAAAABACAAQ=</HashCode>
+      <FileName>ViewModel\QuestionVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="C_Exam_Vict.ViewModel.RegistrationVM" Collapsed="true">
+    <Position X="6.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAAAIAAAQAAAIAACAAAEgAAABAECAAAUIBCAAAA=</HashCode>
+      <FileName>ViewModel\RegistrationVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="C_Exam_Vict.ViewModel.ResultVM" Collapsed="true">
+    <Position X="8.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAQAAAAAAKABAAAAQgAQAAAQAAUQAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ResultVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="C_Exam_Vict.ViewModel.ViewModelBase" Collapsed="true">
+    <Position X="6.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_Exam_Vict.Windows.AuthorizationView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.25" Y="5.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAABA=</HashCode>
+      <FileName>Windows\AuthorizationView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="C_Exam_Vict.Windows.MainMenuView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\MainMenuView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="C_Exam_Vict.Windows.QuestionView" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\QuestionView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="C_Exam_Vict.Windows.RegistrationView" BaseTypeListCollapsed="true">
+    <Position X="15.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\RegistrationView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="C_Exam_Vict.Windows.ResultView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\ResultView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="C_Exam_Vict.App" Collapsed="true">
+    <Position X="15.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C_Exam_Vict.Command" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACgAAAAAYAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="C_Exam_Vict.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="C_Exam_Vict.Services.IViewsManager">
+    <Position X="12" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Services\ViewsManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="C_Exam_Vict.Services.ViewType">
+    <Position X="13.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAQQAAAAAAAEAAAAAAAEAAA=</HashCode>
+      <FileName>Services\ViewsManager.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

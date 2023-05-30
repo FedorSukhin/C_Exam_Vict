@@ -13,6 +13,7 @@ using System.Collections.ObjectModel;
 using C_Exam_Vict.Services;
 using C_Exam_Vict.Repositories;
 using C_Exam_Vict.Model;
+using System.Windows.Documents;
 
 namespace C_Exam_Vict.ViewModel
 {
@@ -34,8 +35,10 @@ namespace C_Exam_Vict.ViewModel
         public MainMenuVM(IViewsManager vm) : base(vm)
         {
             Topics = new ObservableCollection<string>();
+            CountQuestions=new ObservableCollection<int>();
             _victorinaRepos = new VictorinaRepos();
             AddTopics();
+            AddCountQuestions();
             _currentUser = Singletone.GetUserService;
             _currentUser.OnUserChange += OnUserChange;
             _victorinaModel = Singletone.GetVictorina;
@@ -46,6 +49,15 @@ namespace C_Exam_Vict.ViewModel
         private void OnUserChange(object? param, EventArgs e)
         {
             Login = _currentUser.GetCurrentUser()?.Login??"";//!- подавление ошибок ,? строка до конца будет NULL если Get.. вернет NULL, ??"" - если выражение будет NULL то вернет пустую строку 
+        }
+        //колличество вопросов
+        public ObservableCollection<int> CountQuestions { get; set; }
+        public void AddCountQuestions()
+        {
+            CountQuestions.Add(5);
+            CountQuestions.Add(15);
+            CountQuestions.Add(20);
+            CountQuestions.Add(25);
         }
 
         //выбранная тема 
@@ -69,6 +81,16 @@ namespace C_Exam_Vict.ViewModel
             {
                 _topic = value;
                 OnPropertyChanged("Topic");
+            }
+        }
+        private int _countQuestion=0;
+        public int CountQuestion
+        {
+            get => _countQuestion;
+            set
+            {
+                _countQuestion = value;
+                OnPropertyChanged("CountQuestion");
             }
         }
         private string _errormessage = "";
@@ -116,7 +138,7 @@ namespace C_Exam_Vict.ViewModel
         {
             try
             {
-                _victorinaModel.StartVictorina(Topic, 20);
+                _victorinaModel.StartVictorina(Topic, CountQuestion);
                 viewsManager.LoadView(ViewType.Question);
             }
             catch (Exception e) { ErrorMessage = e.Message; }

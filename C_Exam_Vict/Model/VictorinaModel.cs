@@ -20,6 +20,10 @@ namespace C_Exam_Vict.Model
                 Text = question.Text;
                 Answers = question.Answers.ToList();
             }
+            //public override string ToString()
+            //{
+            //    return IsAnsweredCorrectly?? base.ToString();
+            //}
         }
         private int _numberQuestion = 0;
         private string _nameVictorina;
