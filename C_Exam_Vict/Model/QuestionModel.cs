@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace C_Exam_Vict.Model
 {
-    internal class QuestionModel
+    public class QuestionModel
     {
         public string Text { get; set; }
         public Guid Id { get; set; }
@@ -25,6 +25,15 @@ namespace C_Exam_Vict.Model
         public void AddAnswer(string answer, bool isCorrect)
         {
             Answers.Add(new AnswersEntity(answer, isCorrect));
+        }
+        public override string ToString()
+        {
+            string result = "";
+            foreach (var item in Answers)
+            {
+                if (item.IsCorrect) result += "\n" + item.Text;
+            }
+            return Text + result + "\n";
         }
     }
 }

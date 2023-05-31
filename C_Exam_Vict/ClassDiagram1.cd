@@ -42,17 +42,10 @@
       <FileName>Entities\UserEntity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="C_Exam_Vict.Model.ModelDepositorBase" Collapsed="true">
-    <Position X="17" Y="1.75" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Model\ModelDepositorBase.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="C_Exam_Vict.Model.QuestionModel" Collapsed="true">
     <Position X="18.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAQAAAAQAAACAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAEAAAAAAAAAAAQAAAAQAAACAAAAAA=</HashCode>
       <FileName>Model\QuestionModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -66,7 +59,7 @@
   <Class Name="C_Exam_Vict.Model.VictorinaModel" Collapsed="true">
     <Position X="20.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAAAAAAAAAAAAAAAAAAAEEAIAABACAAAGAIAIhAAAAE=</HashCode>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAEEAIAABACAAAGAIAYhAAAAE=</HashCode>
       <FileName>Model\VictorinaModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -124,7 +117,7 @@
   <Class Name="C_Exam_Vict.ViewModel.MainMenuVM" Collapsed="true">
     <Position X="2" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IQEABAEAEADEEgEAIEAABAAAgAAABAAIAAAUIiAAAIA=</HashCode>
+      <HashCode>IwEABAEAEADEEgEAIFAABAAAgAAABAAIAAAUIiAAAIA=</HashCode>
       <FileName>ViewModel\MainMenuVM.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -155,7 +148,7 @@
   <Class Name="C_Exam_Vict.ViewModel.ResultVM" Collapsed="true">
     <Position X="8.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAAAAAAAAQAAAAAAKABAAAAQgAQAAAQAAUQAAAAAAAA=</HashCode>
+      <HashCode>QAAIAAAAAQAAAAAAKABAAAAQgAQAAARAAUQAAAAAAAA=</HashCode>
       <FileName>ViewModel\ResultVM.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />

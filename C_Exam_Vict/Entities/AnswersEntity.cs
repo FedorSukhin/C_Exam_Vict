@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace C_Exam_Vict.Entities
 {
-    internal class AnswersEntity
+    public class AnswersEntity
     {
         public Guid Id { get; set; }
         public Guid Fk_Question { get; set; }

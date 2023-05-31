@@ -19,24 +19,38 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="1.5*"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="ResultText" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Center"
+            <TextBlock x:Name="ResultText" HorizontalAlignment="Center" Grid.Row="0" TextWrapping="Wrap"  VerticalAlignment="Center"
                         FontFamily="Algerian" FontSize="30" Text="{Binding ResultString}"/>
-            <TextBlock x:Name="QuestionCountText" HorizontalAlignment="Center" Grid.Row="3" TextWrapping="Wrap"  VerticalAlignment="Center"
+            <TextBlock x:Name="QuestionCountText" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Center"
                        FontFamily="Algerian" FontSize="24" Text="Questions count"/>
-            <TextBlock x:Name="QuestionCount" HorizontalAlignment="Center"  Grid.Row="4" TextWrapping="Wrap"  VerticalAlignment="Center"
+            <TextBlock x:Name="QuestionCount" HorizontalAlignment="Center"  Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Center"
                         FontFamily="Algerian" FontSize="24" Text="{Binding QuestionCount}"/>
-            <TextBlock x:Name="RightAnswersText" HorizontalAlignment="Center"  Grid.Row="5" TextWrapping="Wrap"  VerticalAlignment="Center"
+            <TextBlock x:Name="RightAnswersText" HorizontalAlignment="Center"  Grid.Row="3" TextWrapping="Wrap"  VerticalAlignment="Center"
                        FontFamily="Algerian" FontSize="24" Text="Right Answers Count"/>
-            <TextBlock x:Name="RightAnswers" HorizontalAlignment="Center"  Grid.Row="6" TextWrapping="Wrap"  VerticalAlignment="Center"
+            <TextBlock x:Name="RightAnswers" HorizontalAlignment="Center"  Grid.Row="4" TextWrapping="Wrap"  VerticalAlignment="Center"
                         FontFamily="Algerian" FontSize="24" Text="{Binding RightAnswersCount}"/>
             <Button x:Name="NextButton" Height="40" Width="150" HorizontalAlignment="Right"  Grid.Row="8" VerticalAlignment="Center"
                     FontFamily="Algerian" FontSize="24" Content="MainMenu" Command="{Binding BackToMainMenu}"/>
+            <ListBox 
+                 Grid.Row="6"
+                ItemsSource="{Binding Path=Results}" SelectionMode="Single">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <ListBox IsEnabled="False">
+                            <DockPanel Width="500" Height="auto" >
+                                <TextBlock Text="{Binding QuestionNumber}" DockPanel.Dock="Left" Width="20" FontSize="16" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Text}" TextWrapping="Wrap"  Width="450" FontSize="16" />
+                                <CheckBox IsChecked="{Binding IsAnsweredCorrectly}" DockPanel.Dock="Right"/>
+                            </DockPanel>
+                            <ListBox ItemsSource="{Binding Path=Answers}" SelectionMode="Single" BorderThickness="0"/>
+                        </ListBox>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
     </Grid>
 </UserControl>

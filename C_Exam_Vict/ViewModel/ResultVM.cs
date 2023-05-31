@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
+using C_Exam_Vict.Repositories;
+using System.Collections.ObjectModel;
 
 namespace C_Exam_Vict.ViewModel
 {
@@ -28,13 +30,37 @@ namespace C_Exam_Vict.ViewModel
             BackToMainMenu = new Command(MainMenu, () => true);
             _victorina.OnVictorinaStop += SetResultCount;
         }
-        private void SetResultCount(Object? obj,EventArgs e)
+        private void SetResultCount(Object? obj, EventArgs e)
         {
-            (ResultString,RightAnswersCount) = _victorina.ResultVictorina(3);
-            QuestionCount = (_victorina.GetCurrentNumberQuestion() + 1).ToString();        
+            (ResultString, RightAnswersCount) = _victorina.ResultVictorina(3);
+            QuestionCount = (_victorina.GetCurrentNumberQuestion() + 1).ToString();
+            Results=_victorina.GetResults().ToList();
         }
 
         //Properties
+        //список ответов 
+        public ObservableCollection<QuestionUserResult> AllUserQuestion { get; set; }
+
+        //заполняем список ответов
+        public void AddAllUserQuestion()
+        {
+            var list = _victorina.GetAllUserQuestion();
+            foreach (var item in list)
+            {
+               AllUserQuestion.Add(item);
+            }
+        }
+        private List<QuestionUserResult> _results;
+        public List<QuestionUserResult> Results
+        {
+            get => _results;
+            set
+            {
+                _results = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         private string _questionCount;
         public string QuestionCount
